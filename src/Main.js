@@ -1,28 +1,67 @@
 import React from 'react'
-import logo from './logo.svg'
-import Button from '@material-ui/core/Button'
+import MdcsButton from './components/Button'
 import './Main.css'
+
+import {Button} from '@material-ui/core'
 
 function Main() {
   return (
     <div className="Main">
-      <header className="Main-header">
-        <img src={logo} className="Main-logo" alt="logo" />
-        <p>
-          Edit <code>src/Main.js</code> and save to reload.
-        </p>
-        <a
-          className="Main-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
-      </header>
+      {/* variant="text" */}
+      <MdcsButton variant="text" color="success">
+        Mdcs success
+      </MdcsButton>
+      <MdcsButton variant="text" color="info">
+        Mdcs info
+      </MdcsButton>
+      <MdcsButton variant="text" color="warning">
+        Mdcs warning
+      </MdcsButton>
+      <MdcsButton variant="text" color="danger">
+        Mdcs danger
+      </MdcsButton>
+
+      {/* variant="outlined" */}
+      <MdcsButton variant="outlined" color="success">
+        Mdcs success
+      </MdcsButton>
+      <MdcsButton variant="outlined" color="info">
+        Mdcs info
+      </MdcsButton>
+      <MdcsButton variant="outlined" color="warning">
+        Mdcs warning
+      </MdcsButton>
+      <MdcsButton variant="outlined" color="danger">
+        Mdcs danger
+      </MdcsButton>
+
+      {/* variant="contained" */}
+      <MdcsButton variant="contained" color="success">
+        Mdcs success
+      </MdcsButton>
+      <MdcsButton variant="contained" color="info">
+        Mdcs info
+      </MdcsButton>
+      <MdcsButton variant="contained" color="warning">
+        Mdcs warning
+      </MdcsButton>
+      <MdcsButton variant="contained" color="danger">
+        Mdcs danger
+      </MdcsButton>
+
+      <MdcsButton variant="text" color="primary">
+        Mdcs primary
+      </MdcsButton>
+
+      <Button variant="text" color="primary">
+        mui primary
+      </Button>
+      <Button variant="text" color="secondary">
+        mui secondary
+      </Button>
+      <Button variant="text" color="info">
+        mui info
+      </Button>
     </div>
   )
 }
