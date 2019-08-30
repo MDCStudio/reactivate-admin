@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core'
+import { lighten, darken } from '@material-ui/core/styles/colorManipulator'
 
 export const palette = {
   primary: '#3366ff',
@@ -15,10 +16,26 @@ export const lightTheme = createMuiTheme({
     type: 'light',
     primary: { main: palette.primary },
     secondary: { main: palette.secondary },
-    success: { main: palette.success },
-    info: { main: palette.info },
-    warning: { main: palette.warning },
-    danger: { main: palette.danger },
+    success: {
+      light: lighten(palette.success, .2),
+      main: palette.success,
+      dark: darken(palette.success, .2)
+    },
+    info: {
+      light: lighten(palette.info, .2),
+      main: palette.info,
+      dark: darken(palette.info, .2)
+    },
+    warning: {
+      light: lighten(palette.warning, .2),
+      main: palette.warning,
+      dark: darken(palette.warning, .2)
+    },
+    danger: {
+      light: lighten(palette.danger, .2),
+      main: palette.danger,
+      dark: darken(palette.danger, .2)
+    },
   },
   // typography: { },  // TODO: add nunito (https://fonts.google.com/specimen/Nunito) as primary font
   overrides: {
