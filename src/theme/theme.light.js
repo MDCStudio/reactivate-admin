@@ -1,9 +1,13 @@
 import { createMuiTheme } from '@material-ui/core'
 import { lighten, darken } from '@material-ui/core/styles/colorManipulator'
 
+export const extraColors = ['success', 'info', 'warning', 'danger']
+
+// TODO @fox: should add validations if extra colors exist which do not have values defined in the palette object or in the theme object
+
 export const palette = {
   primary: '#3366ff',
-  secondary: '#3366ff',  // TODO @fox: we need to set this to a different value
+  secondary: '#2196f3',  // TODO @fox: we need to set this to a different value
   success: '#00d68f',
   info: '#0095ff',
   warning: '#ffaa00',

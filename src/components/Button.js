@@ -3,12 +3,14 @@ import clsx from 'clsx'
 import { Button as MuiButton } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
+import { capitalize } from '@material-ui/core/utils'
+import { extraColors } from '../theme/theme.light';
 
-const makeTextStyles = (style, theme) => (
-  {[`text${style.charAt(0).toUpperCase() + style.slice(1)}`]: {
-    color: theme.palette[style].main,
+const makeTextStyles = (color, theme) => ({
+  [`text${capitalize(color)}`]: {
+    color: theme.palette[color].main,
     '&:hover': {
-      backgroundColor: fade(theme.palette[style].main, theme.palette.action.hoverOpacity),
+      backgroundColor: fade(theme.palette[color].main, theme.palette.action.hoverOpacity),
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: 'transparent',
@@ -17,13 +19,13 @@ const makeTextStyles = (style, theme) => (
   }
 })
 
-const makeOutlinedStyles = (style, theme) => (
-  {[`outlined${style.charAt(0).toUpperCase() + style.slice(1)}`]: {
-    color: theme.palette[style].main,
-    border: `1px solid ${fade(theme.palette[style].main, 0.5)}`,
+const makeOutlinedStyles = (color, theme) => ({
+  [`outlined${capitalize(color)}`]: {
+    color: theme.palette[color].main,
+    border: `1px solid ${fade(theme.palette[color].main, 0.5)}`,
     '&:hover': {
-      border: `1px solid ${theme.palette[style].main}`,
-      backgroundColor: fade(theme.palette[style].main, theme.palette.action.hoverOpacity),
+      border: `1px solid ${theme.palette[color].main}`,
+      backgroundColor: fade(theme.palette[color].main, theme.palette.action.hoverOpacity),
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: 'transparent',
@@ -32,36 +34,26 @@ const makeOutlinedStyles = (style, theme) => (
   }
 })
 
-const makeContainedStyles = (style, theme) => (
-  {[`contained${style.charAt(0).toUpperCase() + style.slice(1)}`]: {
-    color: theme.palette[style].contrastText,
-    backgroundColor: theme.palette[style].main,
+const makeContainedStyles = (color, theme) => ({
+  [`contained${capitalize(color)}`]: {
+    color: theme.palette[color].contrastText,
+    backgroundColor: theme.palette[color].main,
     '&:hover': {
-      backgroundColor: theme.palette[style].dark,
+      backgroundColor: theme.palette[color].dark,
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
-        backgroundColor: theme.palette[style].main,
+        backgroundColor: theme.palette[color].main,
       },
     },
   }
 })
 
-export const styles = theme => ({
-  ...makeTextStyles('success', theme),
-  ...makeTextStyles('info', theme),
-  ...makeTextStyles('warning', theme),
-  ...makeTextStyles('danger', theme),
-
-  ...makeOutlinedStyles('success', theme),
-  ...makeOutlinedStyles('info', theme),
-  ...makeOutlinedStyles('warning', theme),
-  ...makeOutlinedStyles('danger', theme),
-
-  ...makeContainedStyles('success', theme),
-  ...makeContainedStyles('info', theme),
-  ...makeContainedStyles('warning', theme),
-  ...makeContainedStyles('danger', theme),
-})
+export const styles = theme => extraColors.reduce((stylesObject, color) =>  ({
+  ...stylesObject,
+  ...makeTextStyles(color, theme),
+  ...makeOutlinedStyles(color, theme),
+  ...makeContainedStyles(color, theme)
+}), {})
 
 const Button = React.forwardRef(function Button(props, ref) {
   const {
