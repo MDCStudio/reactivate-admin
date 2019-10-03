@@ -1,10 +1,10 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Checkbox as MuiCheckbox } from '@material-ui/core'
+import { Radio as MuiRadio } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { capitalize } from '@material-ui/core/utils'
-import { extraColors } from '../theme/theme.light'
+import { extraColors } from '../theme/theme.light';
 
 const makeColorStyles = (color, theme) => ({
   [`color${capitalize(color)}`]: {
@@ -37,7 +37,7 @@ export const styles = theme => extraColors.reduce((stylesObject, color) =>  ({
   ...makeColorStyles(color, theme),
 }), {})
 
-const Checkbox = React.forwardRef(function Checkbox(props, ref) {
+const Radio = React.forwardRef(function Radio(props, ref) {
   const {
     classes,
     className: classNameProp,
@@ -45,7 +45,7 @@ const Checkbox = React.forwardRef(function Checkbox(props, ref) {
   } = props
 
   return (
-    <MuiCheckbox
+    <MuiRadio
       className={clsx(classes[`color${capitalize(color)}`], classNameProp)}
       color={color}
       ref={ref}
@@ -54,4 +54,4 @@ const Checkbox = React.forwardRef(function Checkbox(props, ref) {
   )
 })
 
-export default withStyles(styles, { name: 'MdcsCheckbox' })(Checkbox)
+export default withStyles(styles, { name: 'MdcsRadio' })(Radio)
