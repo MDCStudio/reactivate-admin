@@ -19,6 +19,7 @@ import ButtonsPage from './pages/Buttons'
 import CheckboxesPage from './pages/Checkboxes';
 import RadioButtonsPage from './pages/RadioButtons'
 import ECommerce from './pages/ECommerce';
+import Cards from './pages/Cards';
 
 const useAppBarStyles = makeStyles(theme => ({
   root: {
@@ -143,7 +144,7 @@ function Main() {
         </List>
         <Divider />
         <List>
-          {['Buttons', 'Checkboxes', 'Radio Buttons'].map((text, index) => (
+          {['Buttons', 'Checkboxes', 'Radio Buttons', 'Cards'].map((text, index) => (
             <ListItem button key={text} onClick={() => setCurrentPage(text)}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -171,6 +172,7 @@ function Main() {
           { currentPage === 'Checkboxes' && <CheckboxesPage />}
           { currentPage === 'Radio Buttons' && <RadioButtonsPage />}
           { currentPage === 'E-commerce' && <ECommerce />}
+          { currentPage === 'Cards' && <Cards />}
         </div>
       </main>
     </div>

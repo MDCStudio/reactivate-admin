@@ -5,7 +5,7 @@ import { Button as MuiButton } from '@material-ui/core'
 function ButtonsPage() {
   return (
     <>
-      <div>
+      <div style={{ margin: 10 }}>
         {/* variant="text" */}
         <Button variant="text" color="success">
           Mdcs success
@@ -27,7 +27,7 @@ function ButtonsPage() {
         </Button>
       </div>
 
-      <div>
+      <div style={{ margin: 10 }}>
         {/* variant="outlined" */}
         <Button variant="outlined" color="success">
           Mdcs success
@@ -43,7 +43,7 @@ function ButtonsPage() {
         </Button>
       </div>
 
-      <div>
+      <div style={{ margin: 10 }}>
         {/* variant="contained" */}
         <Button variant="contained" color="success">
           Mdcs success
@@ -59,7 +59,7 @@ function ButtonsPage() {
         </Button>
       </div>
 
-      <div>
+      <div style={{ margin: 10 }}>
         <MuiButton variant="text" color="primary">
           mui primary
         </MuiButton>

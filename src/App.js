@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from '@material-ui/styles'
 import Main from './Main'
-import { lightTheme } from './theme/theme.light'
+import lightTheme from './theme/theme.light'
 
 function App() {
   return (

@@ -16,7 +16,7 @@ export const palette = {
   background: '#edf1f7'
 }
 
-export const lightTheme = createMuiTheme({
+const lightTheme = createMuiTheme({
   palette: {
     type: 'light',
     primary: { main: palette.primary },
@@ -24,22 +24,26 @@ export const lightTheme = createMuiTheme({
     success: {
       light: lighten(palette.success, .2),
       main: palette.success,
-      dark: darken(palette.success, .2)
+      dark: darken(palette.success, .2),
+      contrastText: 'white'
     },
     info: {
       light: lighten(palette.info, .2),
       main: palette.info,
-      dark: darken(palette.info, .2)
+      dark: darken(palette.info, .2),
+      contrastText: 'white'
     },
     warning: {
       light: lighten(palette.warning, .2),
       main: palette.warning,
-      dark: darken(palette.warning, .2)
+      dark: darken(palette.warning, .2),
+      contrastText: 'white'
     },
     danger: {
       light: lighten(palette.danger, .2),
       main: palette.danger,
-      dark: darken(palette.danger, .2)
+      dark: darken(palette.danger, .2),
+      contrastText: 'white'
     },
     background: {
       light: lighten(palette.background, .2),
@@ -48,7 +52,47 @@ export const lightTheme = createMuiTheme({
     }
   },
   // typography: { },  // TODO: add nunito (https://fonts.google.com/specimen/Nunito) as primary font
-  overrides: {
-    // particular light theme overrides here
-  }
 })
+
+lightTheme.overrides = {
+  // particular light theme overrides here
+  MuiButton: {
+    root: {
+      borderRadius: 3,
+      margin: 5
+    },
+    contained: {
+      // color: theme.palette.getContrastText(theme.palette.grey[300]),
+      // backgroundColor: theme.palette.grey[300],
+      boxShadow: lightTheme.shadows[0],
+      '&:hover': {
+        // backgroundColor: theme.palette.grey.A100,
+        boxShadow: lightTheme.shadows[2],
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          boxShadow: lightTheme.shadows[0],
+          // backgroundColor: theme.palette.grey[300],
+        },
+        '&$disabled': {
+          // backgroundColor: theme.palette.action.disabledBackground,
+        },
+      },
+      '&$focusVisible': {
+        boxShadow: lightTheme.shadows[4],
+      },
+      '&:active': {
+        boxShadow: lightTheme.shadows[6],
+      },
+      '&$disabled': {
+        // color: theme.palette.action.disabled,
+        boxShadow: lightTheme.shadows[0],
+        // backgroundColor: theme.palette.action.disabledBackground,
+      },
+    },
+    outlinedVariant: {
+      transparentBackground: false
+    }
+  }
+}
+
+export default lightTheme
