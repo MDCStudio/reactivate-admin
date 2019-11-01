@@ -12,7 +12,8 @@ export const palette = {
   info: '#0095ff',
   warning: '#ffaa00',
   danger: '#ff3d71',
-  basic: '#c5cee0'
+  basic: '#c5cee0',
+  background: '#edf1f7'
 }
 
 export const lightTheme = createMuiTheme({
@@ -40,6 +41,11 @@ export const lightTheme = createMuiTheme({
       main: palette.danger,
       dark: darken(palette.danger, .2)
     },
+    background: {
+      light: lighten(palette.background, .2),
+      main: palette.background,
+      dark: darken(palette.background, .2)
+    }
   },
   // typography: { },  // TODO: add nunito (https://fonts.google.com/specimen/Nunito) as primary font
   overrides: {

@@ -18,10 +18,14 @@ import MailIcon from '@material-ui/icons/Mail'
 import ButtonsPage from './pages/Buttons'
 import CheckboxesPage from './pages/Checkboxes';
 import RadioButtonsPage from './pages/RadioButtons'
+import ECommerce from './pages/ECommerce';
 
 const useAppBarStyles = makeStyles(theme => ({
   root: {
     // flexGrow: 1,
+    boxShadow: '0 0.5rem 1rem 0 rgba(44,51,73,.1)',
+    backgroundColor: 'white',
+    color: 'black',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -74,6 +78,7 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    backgroundColor: theme.palette.background.main
   },
   toolbar: {
     display: 'flex',
@@ -129,6 +134,15 @@ function Main() {
       >
         <div className={classes.toolbar} />
         <List>
+          {['E-commerce', 'IoT Dashboard'].map((text, index) => (
+            <ListItem button key={text} onClick={() => setCurrentPage(text)}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
           {['Buttons', 'Checkboxes', 'Radio Buttons'].map((text, index) => (
             <ListItem button key={text} onClick={() => setCurrentPage(text)}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -156,6 +170,7 @@ function Main() {
           { currentPage === 'Buttons' && <ButtonsPage />}
           { currentPage === 'Checkboxes' && <CheckboxesPage />}
           { currentPage === 'Radio Buttons' && <RadioButtonsPage />}
+          { currentPage === 'E-commerce' && <ECommerce />}
         </div>
       </main>
     </div>
