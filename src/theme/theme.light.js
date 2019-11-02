@@ -68,14 +68,24 @@ const lightTheme = createMuiTheme({
   shape: {
     borderRadius: 3,
   },
+  mdcs: {
+    button: {
+      focusShadow: '0 0 0 0.275rem rgba(143, 155, 179, 0.16)',    // To not show replace with 'none'
+      outlined: {
+        transparentBackground: false
+      }
+    }
+  }
 })
 
 lightTheme.overrides = {
   // particular light theme overrides here
   MuiButton: {
     root: {
-      // borderRadius: 3,
-      margin: 5
+      margin: 5,
+      '&:focus': {
+        boxShadow: lightTheme.mdcs.button.focusShadow
+      },
     },
     contained: {
       // color: theme.palette.getContrastText(theme.palette.grey[300]),
@@ -89,12 +99,15 @@ lightTheme.overrides = {
           boxShadow: lightTheme.shadows[0],
           // backgroundColor: theme.palette.grey[300],
         },
-        '&$disabled': {
+        // '&$disabled': {
           // backgroundColor: theme.palette.action.disabledBackground,
+        // },
+        '&:focus': {
+          boxShadow: lightTheme.mdcs.button.focusShadow
         },
       },
       '&$focusVisible': {
-        boxShadow: lightTheme.shadows[4],
+        boxShadow: lightTheme.shadows[8],
       },
       '&:active': {
         boxShadow: lightTheme.shadows[6],
@@ -105,9 +118,6 @@ lightTheme.overrides = {
         // backgroundColor: theme.palette.action.disabledBackground,
       },
     },
-    outlinedVariant: {
-      transparentBackground: false
-    }
   }
 }
 

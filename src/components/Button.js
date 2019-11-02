@@ -24,13 +24,13 @@ const makeOutlinedStyles = (color, theme) => ({
     color: theme.palette[color].main,
     border: `1px solid ${fade(theme.palette[color].main, 0.5)}`,
     backgroundColor:
-      theme.overrides.MuiButton.outlinedVariant.transparentBackground
+      theme.mdcs.button.outlined.transparentBackground
       ? 'transparent'
       : fade(theme.palette[color].main, theme.palette.action.hoverOpacity),
     '&:hover': {
       border: `1px solid ${theme.palette[color].main}`,
       backgroundColor:
-        theme.overrides.MuiButton.outlinedVariant.transparentBackground
+        theme.mdcs.button.outlined.transparentBackground
         ? fade(theme.palette[color].main, theme.palette.action.hoverOpacity)
         : fade(theme.palette[color].main, theme.palette.action.hoverOpacity + 0.1),
       // Reset on touch devices, it doesn't add specificity
