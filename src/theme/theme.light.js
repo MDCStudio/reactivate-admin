@@ -74,6 +74,9 @@ const lightTheme = createMuiTheme({
       outlined: {
         transparentBackground: false
       }
+    },
+    card: {
+      accentWidth: '4px'
     }
   }
 })

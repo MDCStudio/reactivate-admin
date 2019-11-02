@@ -1,6 +1,6 @@
 import React from 'react'
-import { CardHeader, CardContent, IconButton, Divider, CardActions } from '@material-ui/core'
-import Card from '../components/card/Card'
+import { IconButton, Divider } from '@material-ui/core'
+import { Card, CardHeader, CardContent, CardActions } from '../components/card'
 import Button from '../components/Button'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import ExpandIcon from '../components/icons/ExpandIcon'
@@ -28,7 +28,7 @@ function Cards() {
   return (
     <>
       <div>Cards page</div>
-      <Card color="success" classes={{color: 'red'}}>
+      <Card color="success" accent="danger" >
         <CardContent>card content 1</CardContent>
         <CardHeader
           color="primary"
