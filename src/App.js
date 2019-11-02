@@ -2,11 +2,14 @@ import React from 'react'
 import { ThemeProvider } from '@material-ui/styles'
 import Main from './Main'
 import lightTheme from './theme/theme.light'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 function App() {
   return (
     <ThemeProvider theme={lightTheme}>
-      <Main/>
+      <BrowserRouter>
+        <Main/>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

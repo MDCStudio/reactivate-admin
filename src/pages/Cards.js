@@ -64,6 +64,8 @@ function Cards() {
 
         <CardActions>
           <ExpandIcon></ExpandIcon>
+          <ExpandIcon></ExpandIcon>
+          <ExpandIcon></ExpandIcon>
         </CardActions>
 
         <CardContent>card content 4</CardContent>

@@ -11,15 +11,13 @@ import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
 import ButtonsPage from './pages/Buttons'
-import CheckboxesPage from './pages/Checkboxes';
+import CheckboxesPage from './pages/Checkboxes'
 import RadioButtonsPage from './pages/RadioButtons'
-import ECommerce from './pages/ECommerce';
-import Cards from './pages/Cards';
+import ECommerce from './pages/ECommerce'
+import Cards from './pages/Cards'
+import { Route, Redirect, Switch, Link } from 'react-router-dom'
 
 const useAppBarStyles = makeStyles(theme => ({
   root: {
@@ -90,6 +88,37 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const menuItems = [
+  {
+    title: 'E-commerce',
+    path: '/app/e-commerce'
+  },
+  {
+    title: 'IoT Dashboard',
+    path: '/app/iot'
+  },
+  {
+    title: 'Buttons',
+    path: '/app/buttons'
+  },
+  {
+    title: 'Checkboxes',
+    path: '/app/checkboxes'
+  },
+  {
+    title: 'Radio Buttons',
+    path: '/app/radio-buttons'
+  },
+  {
+    title: 'Cards',
+    path: '/app/cards'
+  },
+  {
+    title: 'Select Buttons',
+    path: '/app/select-buttons'
+  },
+]
+
 function Main() {
   const appBarClasses = useAppBarStyles()
   const classes = useStyles()
@@ -134,31 +163,17 @@ function Main() {
         open={open}
       >
         <div className={classes.toolbar} />
-        <List>
-          {['E-commerce', 'IoT Dashboard'].map((text, index) => (
-            <ListItem button key={text} onClick={() => setCurrentPage(text)}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+
         <Divider />
+
         <List>
-          {['Buttons', 'Checkboxes', 'Radio Buttons', 'Cards'].map((text, index) => (
-            <ListItem button key={text} onClick={() => setCurrentPage(text)}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {
+            menuItems.map(menuItem => (
+              <ListItem button key={menuItem.title} component={Link} to={menuItem.path}>
+                <ListItemText primary={menuItem.title} />
+              </ListItem>
+            ))
+          }
         </List>
       </Drawer>
 
@@ -168,11 +183,15 @@ function Main() {
         <div className={classes.toolbar} />
 
         <div className="Main">
-          { currentPage === 'Buttons' && <ButtonsPage />}
-          { currentPage === 'Checkboxes' && <CheckboxesPage />}
-          { currentPage === 'Radio Buttons' && <RadioButtonsPage />}
-          { currentPage === 'E-commerce' && <ECommerce />}
-          { currentPage === 'Cards' && <Cards />}
+          <Switch>
+            <Route path="/app/buttons" component={ButtonsPage} />
+            <Route path="/app/checkboxes" component={CheckboxesPage} />
+            <Route path="/app/radio-buttons" component={RadioButtonsPage} />
+            <Route path="/app/e-commerce" component={ECommerce} />
+            <Route path="/app/cards" component={Cards} />
+            {/* <Route path="/app/cards" component={Cards} /> */}
+            <Redirect to="/app/buttons" />
+          </Switch>
         </div>
       </main>
     </div>
