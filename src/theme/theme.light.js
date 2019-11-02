@@ -6,8 +6,18 @@ export const extraColors = ['success', 'info', 'warning', 'danger']
 // TODO @fox: should add validations if extra colors exist which do not have values defined in the palette object or in the theme object
 
 export const palette = {
-  primary: '#3366ff',
-  secondary: '#2196f3',  // TODO @fox: we need to set this to a different value
+  primary: {
+    main: '#3366ff'
+  },
+  secondary: {
+    main: '#2196f3',  // TODO @fox: we need to set this to a different value
+  },
+  error: {
+    light: "#e57373",
+    main: "#f44336",
+    dark: "#d32f2f",
+    contrastText: "#fff",
+  },
   success: '#00d68f',
   info: '#0095ff',
   warning: '#ffaa00',
@@ -19,46 +29,52 @@ export const palette = {
 const lightTheme = createMuiTheme({
   palette: {
     type: 'light',
-    primary: { main: palette.primary },
-    secondary: { main: palette.secondary },
+    primary: palette.primary,
+    secondary: palette.secondary,
+    error: palette.error,
     success: {
       light: lighten(palette.success, .2),
       main: palette.success,
       dark: darken(palette.success, .2),
-      contrastText: 'white'
+      contrastText: 'white',
     },
     info: {
       light: lighten(palette.info, .2),
       main: palette.info,
       dark: darken(palette.info, .2),
-      contrastText: 'white'
+      contrastText: 'white',
     },
     warning: {
       light: lighten(palette.warning, .2),
       main: palette.warning,
       dark: darken(palette.warning, .2),
-      contrastText: 'white'
+      contrastText: 'white',
     },
     danger: {
       light: lighten(palette.danger, .2),
       main: palette.danger,
       dark: darken(palette.danger, .2),
-      contrastText: 'white'
+      contrastText: 'white',
     },
     background: {
       light: lighten(palette.background, .2),
       main: palette.background,
-      dark: darken(palette.background, .2)
+      dark: darken(palette.background, .2),
+      // paper: '#00d68f',
+      // default: 'red',
     }
   },
   // typography: { },  // TODO: add nunito (https://fonts.google.com/specimen/Nunito) as primary font
+  shape: {
+    borderRadius: 3,
+  },
 })
 
 lightTheme.overrides = {
   // particular light theme overrides here
   MuiButton: {
     root: {
-      borderRadius: 3,
+      // borderRadius: 3,
       margin: 5
     },
     contained: {
