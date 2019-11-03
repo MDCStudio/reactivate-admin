@@ -123,7 +123,6 @@ function Main() {
   const appBarClasses = useAppBarStyles()
   const classes = useStyles()
   const [open, setOpen] = useState(true)  // TODO @fox: set default state based on screen width
-  const [currentPage, setCurrentPage] = useState('Buttons')
 
   function handleDrawerOpen() {
     setOpen(!open);
@@ -137,7 +136,7 @@ function Main() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={appBarClasses.title}>
-            News
+            Reactivate Dashboard
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
